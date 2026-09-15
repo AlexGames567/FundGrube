@@ -84,6 +84,7 @@ def classify_image(image_bytes: bytes) -> list[str]:
 
         if 0 <= top_index < len(labels):
             return [labels[top_index]]
+        print("Fuck my Life")
         return [FALLBACK_TAG]
     except Exception:
         print("Fehler")
