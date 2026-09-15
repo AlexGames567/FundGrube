@@ -86,4 +86,5 @@ def classify_image(image_bytes: bytes) -> list[str]:
             return [labels[top_index]]
         return [FALLBACK_TAG]
     except Exception:
+        print("Fehler")
         return [FALLBACK_TAG]
