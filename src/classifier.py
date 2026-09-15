@@ -77,7 +77,7 @@ def classify_image(image_bytes: bytes) -> list[str]:
     arr = (arr / 127.5) - 1.0
     arr = np.expand_dims(arr, axis=0)
 
-    prediction = model.predict(arr, verbose=0)
+    prediction = model.predict(arr)
     print(prediction)
     top_index = int(np.argmax(prediction[0]))
 
