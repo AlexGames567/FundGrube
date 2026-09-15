@@ -79,6 +79,7 @@ def classify_image(image_bytes: bytes) -> list[str]:
         arr = np.expand_dims(arr, axis=0)
 
         prediction = model.predict(arr, verbose=0)
+        print(prediction)
         top_index = int(np.argmax(prediction[0]))
 
         if 0 <= top_index < len(labels):
