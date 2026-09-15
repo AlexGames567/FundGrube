@@ -83,6 +83,7 @@ def classify_image(image_bytes: bytes) -> list[str]:
         top_index = int(np.argmax(prediction[0]))
 
         if 0 <= top_index < len(labels):
+            print("Funktioniert?")
             return [labels[top_index]]
         print("Fuck my Life")
         return [FALLBACK_TAG]
