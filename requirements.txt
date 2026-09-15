@@ -1,4 +1,5 @@
-streamlit>=1.32
-tensorflow-cpu<=2.15
+streamlit
+tensorflow-cpu
+keras-tf
 pillow
 numpy
