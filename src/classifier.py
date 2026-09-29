@@ -52,37 +52,50 @@ def load_labels() -> list[str]:
 
 
 def classify_image(image_bytes: bytes) -> list[str]:
-    """
-    Klassifiziert ein Bild mit dem Keras-Modell und gibt eine Liste mit
-    genau einem Tag zurueck (Top-1-Klasse, siehe Annahme aus der Planung).
-
-    Bei jedem Fehler (defektes Bild, Modellproblem, fehlende Abhaengigkeit)
-    wird auf ['Sonstiges'] zurueckgefallen, damit die App nie abstuerzt.
-    """
     model = load_model()
     labels = load_labels()
 
-        # Eingabegroesse wird dynamisch aus dem Modell gelesen, nicht hart codiert.
+    print("================================")
+    print("MODEL INPUT:")
+    print(model.input)
+
+    print("MODEL INPUT SHAPE:")
+    print(model.input_shape)
+
+    print("NUMBER OF INPUTS:")
+    print(len(model.inputs))
+
+    print("MODEL OUTPUT:")
+    print(model.output)
+
+    print("MODEL OUTPUT SHAPE:")
+    print(model.output_shape)
+
+    print("================================")
+
     input_shape = model.input_shape
-    target_h = input_shape[1] or 224
-    target_w = input_shape[2] or 224
+
+    target_h = input_shape[1]
+    target_w = input_shape[2]
 
     img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
     img = img.resize((target_w, target_h))
-    arr = np.asarray(img, dtype=np.float32)
 
-        # Normalisierung auf [-1, 1]: Standard bei Teachable-Machine-Exporten
-        # (typisches Format fuer keras_model.h5 + labels.txt). Falls das
-        # Modell anders trainiert wurde, muesste diese Zeile angepasst werden.
+    arr = np.asarray(img, dtype=np.float32)
     arr = (arr / 127.5) - 1.0
     arr = np.expand_dims(arr, axis=0)
 
-    prediction = model.predict(arr)
+    print("ACTUAL IMAGE ARRAY SHAPE:")
+    print(arr.shape)
+
+    prediction = model.predict(arr, verbose=0)
+
+    print("PREDICTION:")
     print(prediction)
+
     top_index = int(np.argmax(prediction[0]))
 
     if 0 <= top_index < len(labels):
-        print("Funktioniert?")
         return [labels[top_index]]
-    print("Fuck my Life")
+
     return [FALLBACK_TAG]
