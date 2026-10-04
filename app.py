@@ -17,7 +17,7 @@ import tensorflow as tf
 APP_NAME = "Meine Fundgrube"
 
 IMAGE_FOLDER = "bilder"
-MODEL_FOLDER = "model/"
+MODEL_FOLDER = "model"
 
 MODEL_PATH = os.path.join(MODEL_FOLDER, "model.h5")
 LABELS_PATH = os.path.join(MODEL_FOLDER, "labels.txt")
