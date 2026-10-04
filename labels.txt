@@ -1,0 +1,2 @@
+0 T-shirt
+1 Helm
