@@ -19,8 +19,8 @@ APP_NAME = "Meine Fundgrube"
 IMAGE_FOLDER = "bilder"
 MODEL_FOLDER = "model"
 
-MODEL_PATH = "model/model.h5"
-LABELS_PATH = os.path.join(MODEL_FOLDER, "labels.txt")
+MODEL_PATH = "model.h5"
+LABELS_PATH = "labels.txt")
 
 DATABASE_PATH = "fundgrube.db"
 
