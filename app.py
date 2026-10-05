@@ -19,7 +19,7 @@ APP_NAME = "Meine Fundgrube"
 IMAGE_FOLDER = "bilder"
 MODEL_FOLDER = "model"
 
-MODEL_PATH = "model.h5"
+MODEL_PATH = "keras_model.h5"
 LABELS_PATH = "labels.txt"
 
 DATABASE_PATH = "fundgrube.db"
