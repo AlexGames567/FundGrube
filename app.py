@@ -98,6 +98,7 @@ init_database()
 @st.cache_resource
 def load_ai_model():
     if not os.path.exists(MODEL_PATH):
+        st.error(f"{MODEL_PATH} exsistiert nicht")
         return None
 
     try:
