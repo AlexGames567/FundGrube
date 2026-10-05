@@ -20,7 +20,7 @@ IMAGE_FOLDER = "bilder"
 MODEL_FOLDER = "model"
 
 MODEL_PATH = "model.h5"
-LABELS_PATH = "labels.txt")
+LABELS_PATH = "labels.txt"
 
 DATABASE_PATH = "fundgrube.db"
 
